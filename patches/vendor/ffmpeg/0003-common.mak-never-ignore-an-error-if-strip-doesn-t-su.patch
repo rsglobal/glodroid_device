@@ -1,0 +1,26 @@
+From f28fa9cf017dc924c6837ae2b1c8721ace2f6202 Mon Sep 17 00:00:00 2001
+From: Rechi <Rechi@users.noreply.github.com>
+Date: Tue, 21 Nov 2017 08:16:53 +0100
+Subject: [PATCH 03/23] common.mak: never ignore an error if strip doesn't
+ succeed
+
+---
+ ffbuild/common.mak | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/ffbuild/common.mak b/ffbuild/common.mak
+index e070b6b5e2..ed2430b462 100644
+--- a/ffbuild/common.mak
++++ b/ffbuild/common.mak
+@@ -87,7 +87,7 @@ COMPILE_MSA = $(call COMPILE,CC,MSAFLAGS)
+ 
+ %.o: %.asm
+ 	$(COMPILE_X86ASM)
+-	-$(if $(ASMSTRIPFLAGS), $(STRIP) $(ASMSTRIPFLAGS) $@)
++	$(if $(STRIP), $(if $(ASMSTRIPFLAGS), $(STRIP) $(ASMSTRIPFLAGS) $@))
+ 
+ %.o: %.rc
+ 	$(WINDRES) $(IFLAGS) --preprocessor "$(DEPWINDRES) -E -xc-header -DRC_INVOKED $(CC_DEPFLAGS)" -o $@ $<
+-- 
+2.37.2
+

@@ -2,7 +2,7 @@
 #
 # Copyright (C) 2020 Roman Stratiienko (r.stratiienko@gmail.com)
 
-$(call inherit-product, device/glodroid/common/device-common.mk)
+$(call inherit-product, glodroid/configuration/common/device-common.mk)
 
 PRODUCT_CHARACTERISTICS := tablet
 PRODUCT_PROPERTY_OVERRIDES += qemu.sf.lcd_density=151
@@ -13,7 +13,7 @@ PRODUCT_COPY_FILES += \
     glodroid/kernel-firmware/armbian/rtlbt/rtl8723cs_xx_config:$(TARGET_COPY_OUT_VENDOR)/etc/firmware/rtl_bt/rtl8723cs_xx_config-pinetab.bin \
 
 PRODUCT_COPY_FILES += \
-    device/glodroid/pinetab/audio.pinetab.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio.pinetab.xml \
+    glodroid/configuration/pinetab/audio.pinetab.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio.pinetab.xml \
 
 PRODUCT_PACKAGES += \
     glodroid_pinetab_overlay_frameworks_base_core \
@@ -26,4 +26,4 @@ PRODUCT_VENDOR_PROPERTIES += \
 # Disable suspend. Crust or device has some issues and get stuck at clock setup.
 # ISSUE: https://gitlab.com/pine64-org/linux/-/issues/35
 PRODUCT_COPY_FILES += \
-    device/glodroid/common/no_suspend.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/no_suspend.pinetab.rc \
+    glodroid/configuration/common/no_suspend.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/no_suspend.pinetab.rc \

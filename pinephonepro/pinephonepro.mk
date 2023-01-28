@@ -2,7 +2,7 @@
 #
 # Copyright (C) 2020 Roman Stratiienko (r.stratiienko@gmail.com)
 
-$(call inherit-product, device/glodroid/pinephonepro/device.mk)
+$(call inherit-product, glodroid/configuration/pinephonepro/device.mk)
 
 TARGET_ARCH := arm64
 TARGET_ARCH_VARIANT := armv8-a
@@ -39,8 +39,8 @@ RK33_BIN := bin/rk33
 
 KERNEL_FRAGMENTS := $(LOCAL_PATH)/kernel.config
 
-KERNEL_SRC       := glodroid/kernel/megous-edge
-KERNEL_DEFCONFIG := $(KERNEL_SRC)/arch/arm64/configs/pinephone_pro_defconfig
+BOARD_KERNEL_SRC_DIR := glodroid/kernel/common-android14-6.1
+KERNEL_DEFCONFIG := $(BOARD_KERNEL_SRC_DIR)/arch/arm64/configs/pinephone_pro_defconfig
 
 KERNEL_DTB_FILE := rockchip/rk3399-pinephone-pro.dtb
 

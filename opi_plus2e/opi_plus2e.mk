@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-$(call inherit-product, device/glodroid/opi_plus2e/device.mk)
+$(call inherit-product, glodroid/configuration/opi_plus2e/device.mk)
 
 # Architecture
 TARGET_ARCH := arm
@@ -40,9 +40,8 @@ GD_NO_DEFAULT_MODEM := true
 CRUST_FIRMWARE_DEFCONFIG := orangepi_plus2e_defconfig
 
 UBOOT_DEFCONFIG  := orangepi_plus2e_defconfig
-KERNEL_SRC       := glodroid/kernel/stable
-KERNEL_DEFCONFIG := $(KERNEL_SRC)/arch/arm/configs/sunxi_defconfig
+KERNEL_DEFCONFIG := $(BOARD_KERNEL_SRC_DIR)/arch/arm/configs/sunxi_defconfig
 KERNEL_FRAGMENTS := \
-    device/glodroid/platform/common/sunxi/sunxi-common.config \
+    glodroid/configuration/platform/common/sunxi/sunxi-common.config \
 
 KERNEL_DTB_FILE := sun8i-h3-orangepi-plus2e.dtb

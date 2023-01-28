@@ -67,3 +67,7 @@ PRODUCT_PACKAGES += \
     android.hardware.health-service.example_recovery \
 
 endif
+
+ifeq ($(GD_NO_DEFAULT_VIBRATOR),)
+PRODUCT_PACKAGES += android.hardware.vibrator-service.glodroid
+endif

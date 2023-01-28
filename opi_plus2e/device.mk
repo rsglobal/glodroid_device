@@ -13,14 +13,14 @@
 # limitations under the License.
 #
 
-$(call inherit-product, device/glodroid/common/device-common.mk)
+$(call inherit-product, glodroid/configuration/common/device-common.mk)
 
 # Out-of-tree modules
 PRODUCT_PACKAGES += \
     8189fs.ko \
 
 PRODUCT_COPY_FILES += \
-    device/glodroid/opi_plus2e/audio.opi_plus2e.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio.opi_plus2e.xml \
+    glodroid/configuration/opi_plus2e/audio.opi_plus2e.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio.opi_plus2e.xml \
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/init.opi_plus2e.aux.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.opi_plus2e.aux.rc \

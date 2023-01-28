@@ -2,7 +2,7 @@
 #
 # Copyright (C) 2020 Roman Stratiienko (r.stratiienko@gmail.com)
 
-$(call inherit-product, device/glodroid/common/device-common.mk)
+$(call inherit-product, glodroid/configuration/common/device-common.mk)
 
 # Firmware
 PRODUCT_COPY_FILES += \
@@ -43,10 +43,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.iio.magn.quirks=no-trig,no-event                \
 
 PRODUCT_COPY_FILES += \
-    device/glodroid/pinephone/modem.pinephone.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/modem.pinephonepro.rc \
+    glodroid/configuration/pinephone/modem.pinephone.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/modem.pinephonepro.rc \
 
 PRODUCT_COPY_FILES += \
-    device/glodroid/pinephonepro/audio.pinephonepro.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio.pinephonepro.xml \
+    glodroid/configuration/pinephonepro/audio.pinephonepro.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio.pinephonepro.xml \
 
 # Camera IPAs
 PRODUCT_PACKAGES += ipa_rkisp1 ipa_rkisp1.so.sign

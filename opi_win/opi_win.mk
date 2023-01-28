@@ -2,7 +2,7 @@
 #
 # Copyright (C) 2020 Roman Stratiienko (r.stratiienko@gmail.com)
 
-$(call inherit-product, device/glodroid/opi_win/device.mk)
+$(call inherit-product, glodroid/configuration/opi_win/device.mk)
 
 # Architecture
 TARGET_ARCH := arm64
@@ -31,9 +31,9 @@ GD_NO_DEFAULT_BLUETOOTH := true
 UBOOT_DEFCONFIG := orangepi_win_defconfig
 ATF_PLAT        := sun50i_a64
 
-KERNEL_DEFCONFIG := device/glodroid/platform/common/sunxi/sunxi64_defconfig
+KERNEL_DEFCONFIG := glodroid/configuration/platform/common/sunxi/sunxi64_defconfig
 KERNEL_FRAGMENTS += \
-    device/glodroid/platform/common/sunxi/sunxi-common.config \
+    glodroid/configuration/platform/common/sunxi/sunxi-common.config \
 
 KERNEL_DTB_FILE := allwinner/sun50i-a64-orangepi-win.dtb
 

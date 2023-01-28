@@ -25,8 +25,8 @@ PRODUCT_MANUFACTURER := RaspberryPiFoundation
 UBOOT_DEFCONFIG := rpi_4_defconfig
 ATF_PLAT        := rpi4
 
-KERNEL_SRC       := glodroid/kernel/broadcom
-KERNEL_DEFCONFIG := $(KERNEL_SRC)/arch/arm64/configs/bcm2711_defconfig
+BOARD_KERNEL_SRC_DIR := glodroid/kernel/broadcom
+KERNEL_DEFCONFIG := $(BOARD_KERNEL_SRC_DIR)/arch/arm64/configs/bcm2711_defconfig
 
 KERNEL_FRAGMENTS := \
     $(LOCAL_PATH)/kernel.config \
@@ -37,4 +37,4 @@ SYSFS_MMC0_PATH := emmc2bus/fe340000.mmc
 
 RPI_CONFIG := $(LOCAL_PATH)/config.txt
 
-$(call inherit-product, device/glodroid/rpi4/device.mk)
+$(call inherit-product, glodroid/configuration/rpi4/device.mk)

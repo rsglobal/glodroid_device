@@ -2,7 +2,7 @@
 #
 # Copyright (C) 2020 Roman Stratiienko (r.stratiienko@gmail.com)
 
-$(call inherit-product, device/glodroid/pinetab/device.mk)
+$(call inherit-product, glodroid/configuration/pinetab/device.mk)
 
 # Architecture
 TARGET_ARCH := arm64
@@ -30,10 +30,9 @@ ATF_PLAT        := sun50i_a64
 
 CRUST_FIRMWARE_DEFCONFIG := pinetab_defconfig
 
-KERNEL_SRC       := glodroid/kernel/megous
-KERNEL_DEFCONFIG := $(KERNEL_SRC)/arch/arm64/configs/pinephone_defconfig
+KERNEL_DEFCONFIG := $(BOARD_KERNEL_SRC_DIR)/arch/arm64/configs/pinephone_defconfig
 KERNEL_FRAGMENTS := \
-    device/glodroid/platform/common/sunxi/a64_overlay.config \
-    device/glodroid/pinetab/kernel.config
+    glodroid/configuration/platform/common/sunxi/a64_overlay.config \
+    glodroid/configuration/pinetab/kernel.config
 
 KERNEL_DTB_FILE := allwinner/sun50i-a64-pinetab.dtb

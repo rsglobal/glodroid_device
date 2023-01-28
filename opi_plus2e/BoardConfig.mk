@@ -14,7 +14,7 @@
 # limitations under the License.
 #
 
-include device/glodroid/common/board-common.mk
+include glodroid/configuration/common/board-common.mk
 
 # Unfortunately WIFI out-of-tree module has an issue when building using CLANG.
 BUILD_KERNEL_USING_GCC := true

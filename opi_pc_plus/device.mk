@@ -2,7 +2,7 @@
 #
 # Copyright (C) 2021 GloDroid project
 
-$(call inherit-product, device/glodroid/common/device-common.mk)
+$(call inherit-product, glodroid/configuration/common/device-common.mk)
 
 # Out-of-tree modules
 PRODUCT_PACKAGES += \

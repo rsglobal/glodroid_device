@@ -2,7 +2,7 @@
 #
 # Copyright (C) 2020 Roman Stratiienko (r.stratiienko@gmail.com)
 
-$(call inherit-product, device/glodroid/opi_prime/device.mk)
+$(call inherit-product, glodroid/configuration/opi_prime/device.mk)
 
 # Architecture
 TARGET_ARCH := arm64
@@ -32,9 +32,9 @@ UBOOT_DEFCONFIG := orangepi_prime_defconfig
 # ATF is not used
 ATF_PLAT        := sun50i_a64
 
-KERNEL_DEFCONFIG := device/glodroid/platform/common/sunxi/sunxi64_defconfig
+KERNEL_DEFCONFIG := glodroid/configuration/platform/common/sunxi/sunxi64_defconfig
 KERNEL_FRAGMENTS += \
-    device/glodroid/platform/common/sunxi/sunxi-common.config \
-    device/glodroid/opi_prime/kernel.config \
+    glodroid/configuration/platform/common/sunxi/sunxi-common.config \
+    glodroid/configuration/opi_prime/kernel.config \
 
 KERNEL_DTB_FILE := allwinner/sun50i-h5-orangepi-prime.dtb

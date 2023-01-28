@@ -1,0 +1,45 @@
+From 1b05c2f5099b8d14cf5589c12114e61560884580 Mon Sep 17 00:00:00 2001
+From: Roman Stratiienko <r.stratiienko@gmail.com>
+Date: Mon, 18 Apr 2022 17:15:11 +0300
+Subject: [PATCH 1/4] dts: pinephonepro: modify mount matrix for MPU6500
+
+Align the orientation of MPU6500 with the one used on the iOS and
+Android devices, which, in my opinion, is the industry standard.
+
+Accelerometer table:
+
+    Orientation                       X       Y       Z
+1. FlashLight->Top, Mic->Bottom       0    9.81       0
+2. FlashLight->Bottom, Mic->Top       0   -9.81       0
+3. FlashLight->Left, Mic->Right    9.81       0       0
+4. FlashLight->Right, Mic->Left   -9.81       0       0
+5. Display->Up                        0       0    9.81
+6. Display->Down                      0       0   -9.81
+
+For items 3,4, the screen should be directed towards the user.
+
+Signed-off-by: Roman Stratiienko <r.stratiienko@gmail.com>
+---
+ arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts b/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts
+index 0b59c2e7965d9..f672a737acc4a 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts
+@@ -1050,9 +1050,9 @@ accelerometer@68 {
+ 		vddio-supply = <&vcc_1v8>;
+ 
+ 		mount-matrix =
+-			"1", "0", "0",
+-			"0", "-1", "0",
+-			"0", "0", "1";
++			"-1", "0", "0",
++			"0", "1", "0",
++			"0", "0", "-1";
+ 	};
+ 
+ 	af8133j: compass@1c {
+-- 
+2.37.2
+

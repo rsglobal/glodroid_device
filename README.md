@@ -1,4 +1,3 @@
-# glodroid_device
-GloDroid project devices configuration
+# pine64_pinephonepro
 
-Find more information at https://github.com/glodroid/glodroid_manifest
+Android for PinePhone-Pro, based on GloDroid project

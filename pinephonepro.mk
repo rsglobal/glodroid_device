@@ -2,7 +2,9 @@
 #
 # Copyright (C) 2020 Roman Stratiienko (r.stratiienko@gmail.com)
 
-$(call inherit-product, device/glodroid/pinephonepro/device.mk)
+PPP_PATH := $(patsubst $(CURDIR)/%,%,$(dir $(abspath $(lastword $(MAKEFILE_LIST)))))
+
+$(call inherit-product, $(PPP_PATH)/device.mk)
 
 TARGET_ARCH := arm64
 TARGET_ARCH_VARIANT := armv8-a
@@ -18,7 +20,7 @@ TARGET_2ND_CPU_VARIANT := cortex-a15
 
 PRODUCT_BOARD_PLATFORM := rockchip
 PRODUCT_NAME := pinephonepro
-PRODUCT_DEVICE := pinephonepro
+PRODUCT_DEVICE := pine64-pinephonepro
 PRODUCT_BRAND := Pine64
 PRODUCT_MODEL := PinePhonePro
 PRODUCT_MANUFACTURER := Pine64
@@ -36,11 +38,6 @@ DDR_BLOB := rk33/rk3399_ddr_933MHz_v1.25.bin
 MINILOADER_BLOB := rk33/rk3399_miniloader_v1.26.bin
 RKTRUST_INI := RK3399TRUST.ini
 RK33_BIN := bin/rk33
-
-KERNEL_FRAGMENTS := $(LOCAL_PATH)/kernel.config
-
-KERNEL_SRC       := glodroid/kernel/megous-edge
-KERNEL_DEFCONFIG := $(KERNEL_SRC)/arch/arm64/configs/pinephone_pro_defconfig
 
 KERNEL_DTB_FILE := rockchip/rk3399-pinephone-pro.dtb
 

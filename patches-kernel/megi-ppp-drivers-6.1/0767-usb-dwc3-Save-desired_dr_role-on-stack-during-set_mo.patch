@@ -1,0 +1,41 @@
+From bd12df15df2559c66e186fe4d32705a2d9b1417a Mon Sep 17 00:00:00 2001
+From: Ondrej Jirman <megi@xff.cz>
+Date: Mon, 27 Jun 2022 18:01:12 +0200
+Subject: [PATCH] usb: dwc3: Save desired_dr_role on stack during set_mode
+ processing
+
+While __dwc3_set_mode runs, the new call may come to dwc3_set_mode()
+which would change desired_dr_role at inappropriate time and
+potentially confuse the driver.
+
+Solve this by storing the copy of the desired_dr_role on stack.
+If the new call to dwc3_set_mode happens before __dwc3_set_mode
+is finished, the new mode will be correctly applied afterwards.
+
+Signed-off-by: Ondrej Jirman <megi@xff.cz>
+---
+ drivers/usb/dwc3/core.c | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/drivers/usb/dwc3/core.c b/drivers/usb/dwc3/core.c
+index 5655569b5e4c7..15de4a3fb3364 100644
+--- a/drivers/usb/dwc3/core.c
++++ b/drivers/usb/dwc3/core.c
+@@ -124,6 +124,14 @@ static void __dwc3_set_mode(struct work_struct *work)
+ 	u32 reg;
+ 	u32 desired_dr_role;
+ 
++	/*
++	 * Copy desired_dr_role because it can be changed again by
++	 * dwc3_set_mode while this function is running.
++	 */
++	spin_lock_irqsave(&dwc->lock, flags);
++	desired_dr_role = dwc->desired_dr_role;
++	spin_unlock_irqrestore(&dwc->lock, flags);
++
+ 	mutex_lock(&dwc->mutex);
+ 	spin_lock_irqsave(&dwc->lock, flags);
+ 	desired_dr_role = dwc->desired_dr_role;
+-- 
+2.37.2
+
